@@ -1,0 +1,53 @@
+<div ng-include="../nav.html">
+
+</div>
+<section class="container">
+  <div class="row">
+  <img *ngIf="page_loading" src="../assets/img/loading.gif" class="loading offset-md-5"/>
+      <div  class="col-md-5 offset-md-3">
+        <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{error_msg}}
+            <ul>
+              <li *ngFor="let serrs of sign_up_errs">
+                {{serrs}}
+              </li>
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div *ngIf="success" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{success_msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="card lg-div">
+              <div class="card-body">
+                  <div class="container">
+                    
+                      <img *ngIf="file"  src="" class="postc-img" />
+                      <div style="padding: 10px; margin-left: 10px;">
+                          <input hidden (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" type="file" name="img" class="hfimg" />
+                          <button class="btn btn-primary"><img class="post-img-open" src="../assets/img/camera.png" style="height: 40px; width: 40px;"></button>
+                      </div>
+                  </div>
+                  <form>
+                      <div class="form-group">
+                          <input  [(ngModel)]="post.title" type="text" name="title" placeholder="Full Name" class="form-control"/>
+                      </div>
+                      
+                      <div class="form-group">
+                        <textarea style="height:100px;" class="form-control"  [(ngModel)]="post.text" name="bio">
+
+                        </textarea>
+                      </div>
+                      <div class="form-group">
+                          <button (click)="create()" class="btn btn-primary">Create<img *ngIf="loading" src="../assets/img/loading.gif" class="loading"/></button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

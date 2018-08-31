@@ -1,33 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { User } from '../User';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-forgotpass',
+  templateUrl: './forgotpass.component.html',
+  styleUrls: ['./forgotpass.component.css']
 })
-export class SigninComponent implements OnInit {
+export class ForgotpassComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
-  
+
   ngOnInit() {
-    this.loading=false
   }
-  user=new User()
+
   loading:boolean
   error:boolean=false
   error_msg:string
   sign_in_errs
   success:boolean
   success_msg:string
-  token:string
+  email:string
 
-  
-  signin(){
-    this.loading=true
-    this.authService.login(this.user).subscribe((response)=>{
-      this.loading=false
+
+  forgotpass(){
+    this.authService.forgotpass(this.email).subscribe((response)=>{
+        this.loading=false
       console.log(response['message'])
       if(response['code']==0){
         this.error=true
@@ -38,11 +35,7 @@ export class SigninComponent implements OnInit {
         this.error=false
         this.success=true
         this.success_msg=response['message']
-        this.token=response['token']
-        localStorage.setItem('_token',this.token)
-        localStorage.setItem('_user_id',response['user_id'])
       }
     })
   }
-
 }

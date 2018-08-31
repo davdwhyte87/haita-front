@@ -13,5 +13,23 @@ export class AuthService {
   register(user:User){
     return this.http.post(environment.Api_Url+'register',user)
   }
+
+  login(user:User){
+    return this.http.post(environment.Api_Url+'login',user)
+  }
+
+  confirm(code){
+    return this.http.get(environment.Api_Url+'confirm/'+code)
+  }
+
+  forgotpass(email){
+    var user=new User()
+    user.email=email
+    return this.http.post(environment.Api_Url+'forgotpass',user)
+  }
+
+  fchangepass(data){
+    return this.http.post(environment.Api_Url+'forgotpass/changepass',data)
+  }
   
 }

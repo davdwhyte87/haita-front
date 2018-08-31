@@ -1,41 +1,51 @@
+<app-nav></app-nav>
 <section class="container">
   <div ng-include="nav.html"></div>
 </section>
-<section class="posts container">
-    <div class="row">
+<img *ngIf="loading" src="../assets/img/loading.gif" class="loading offset-md-5"/>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> {{error_msg}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<section *ngIf="posts" class="posts container">
+    <div *ngFor="let post of posts" class="row post">
         <div class="col-md-7 offset-md-2">
             <div class="card">
                 <div class="card-head">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img src="" />
+                        <div class="col-md-1">
+                            <img src="../assets/img/kesh.png" class="p-u-img rounded-circle" />
                         </div>
                         <div class="col-md-8">
-                            <h4>@fellowmish</h4>
+                            <h4>@{{post.user.uname}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div >
-                        <img src="../assets/img/kesh.png" class="p-img img-responsive"/>
+                        <img [src]="pimage_path+post.image" class="post-img img-responsive"/>
                     </div>
                     <div>
-                        <h3>The loveers are here oo</h3>
+                        <h3>{{post.title}}</h3>
                     </div>
                     <div>
                         <p>
-                            Whats up my people i just want to let you know
-                            its cool you are not in the work man shoy store 
+                       {{post.text}}
                         </p>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
-                            <img src="../assets/img/love.png"/>
-                            <h4>  235</h4>
+                            <a (click)="like(post.id)" class="like-btn">
+                                <img *ngIf="!liked(post.likes)"  src="../assets/img/lovef.png"/>
+                                <img *ngIf="liked(post.likes)"  src="../assets/img/love.png"/>
+                            </a>
+                            <h4>  {{post.likes.length}}</h4>
                         </div>
                         <div class="col-md-2">
-                            <img src="../assets/img/comment.png"/>
-                            <h4>  235</h4>
+                            <a routerLink="/post/{{post.id}}/comments"><img src="../assets/img/comment.png"/></a>
+                            <h4>  {{post.comment.length}}</h4>
                         </div>
                     </div>
                 </div>

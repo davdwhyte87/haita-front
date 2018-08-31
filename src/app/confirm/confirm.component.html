@@ -25,13 +25,10 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <input [(ngModel)]="user.email" type="email" name="email" placeholder="Email" class="form-control"/>
+                            <input [(ngModel)]="code" type="number" name="code" placeholder="Confirmation Code" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <input [(ngModel)]="user.password" type="password" name="password" placeholder="Password" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <button (click)="signin()" class="btn btn-primary">Signin <img *ngIf="loading" src="../assets/img/loading.gif" class="loading"/></button>
+                            <button (click)="confirm()" class="btn btn-primary">Signin <img *ngIf="loading" src="../assets/img/loading.gif" class="loading"/></button>
                         </div>
                     </form>
                 </div>

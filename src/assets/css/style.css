@@ -9,11 +9,20 @@ body{
     width: 100%;
     
 }
-
+.post{
+    padding-bottom: 20px;
+}
 .posts{
     padding: 30px;
 }
-
+.post-img{
+    width: inherit;
+}
+.p-u-img{
+    height: 50px;
+    width:50px;
+    padding: 3px;
+}
 .p-image{
     width:100%;
 }
@@ -25,4 +34,25 @@ body{
 .loading{
     height: 40px;
     width: 40px;
+}
+
+.p-img{
+    width: 120px;
+    height: 120px;
+}
+.c-input{
+    width: 400px !important;
+    height: 100px !important;
+}
+.comment-list{
+    overflow-y: auto;
+    height: 500px;
+}
+.postc-img{
+    height: 200px;
+    width: 350px;
+}
+.post-img-open{
+    height: 30px !important;
+    width: 30px !important;
 }

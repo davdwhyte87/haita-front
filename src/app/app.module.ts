@@ -8,12 +8,28 @@ import {HttpClientModule} from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import {FormsModule} from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { ForgotpassComponent } from './forgotpass/forgotpass.component';
+import { ChangepassComponent } from './changepass/changepass.component';
+import { FchangepassComponent } from './fchangepass/fchangepass.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CommentComponent } from './comment/comment.component';
+import { NavComponent } from './nav/nav.component';
+import { PostComponent } from './post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ConfirmComponent,
+    ForgotpassComponent,
+    ChangepassComponent,
+    FchangepassComponent,
+    ProfileComponent,
+    CommentComponent,
+    NavComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

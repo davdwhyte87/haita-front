@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { User } from '../User';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-confirm',
+  templateUrl: './confirm.component.html',
+  styleUrls: ['./confirm.component.css']
 })
-export class SigninComponent implements OnInit {
+export class ConfirmComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
-  
+
   ngOnInit() {
-    this.loading=false
   }
-  user=new User()
   loading:boolean
   error:boolean=false
   error_msg:string
@@ -22,11 +19,11 @@ export class SigninComponent implements OnInit {
   success:boolean
   success_msg:string
   token:string
+  code:string
 
-  
-  signin(){
+  confirm(){
     this.loading=true
-    this.authService.login(this.user).subscribe((response)=>{
+    this.authService.confirm(this.code).subscribe((response)=>{
       this.loading=false
       console.log(response['message'])
       if(response['code']==0){
@@ -38,11 +35,7 @@ export class SigninComponent implements OnInit {
         this.error=false
         this.success=true
         this.success_msg=response['message']
-        this.token=response['token']
-        localStorage.setItem('_token',this.token)
-        localStorage.setItem('_user_id',response['user_id'])
       }
     })
   }
-
 }

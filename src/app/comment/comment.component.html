@@ -1,0 +1,37 @@
+<section class="container">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-5 offset-md-3">
+            <ul class="list-group comment-list">
+                <li *ngFor="let comment of comments" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="{{pimage_path+comment.user.image}}" class="p-u-img rounded-circle">
+                        </div>
+                        <div class="col">
+                            <h4>@{{comment.user.uname}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>
+                          {{comment.text}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section style="position: absolute; bottom:0; width: 100%;" class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-4">
+            <form class="form-inline">
+                <div class="form-group">
+                  <textarea [(ngModel)]="comment.text" name="text" class="form-control c-input" placeholder="Comment here.." ></textarea>
+                </div>
+                <div class="form-group">
+                    <button (click)="postComment()" class="btn btn-primary">Comment <img *ngIf="loading" src="../assets/img/loading.gif" class="loading"/></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
