@@ -1,0 +1,45 @@
+<app-nav></app-nav>
+<section class="container">
+   <div class="row">
+     <div class="col-md-6 offset-md-2">
+        <div class="card">
+            <div class="card-head">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img [src]="uimage_path+post.user.image" class="p-u-img rounded-circle" />
+                    </div>
+                    <div class="col-md-8">
+                        <h4>@{{post.user.uname}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div >
+                    <img [src]="pimage_path+post.image" class="post-img img-responsive"/>
+                </div>
+                <div>
+                    <h3>{{post.title}}</h3>
+                </div>
+                <div>
+                    <p>
+                    {{post.text}}
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 cmx">
+                        <a (click)="like(post.id)" class="like-btn">
+                            <img *ngIf="!liked(post.likes)"  src="../assets/img/lovef.png" style="width: 100%;"/>
+                            <img *ngIf="liked(post.likes)"  src="../assets/img/love.png"/>
+                        </a>
+                        <h4>  {{post.likes.length}}</h4>
+                    </div>
+                    <div class="col-md-2 cmx">
+                        <a routerLink="/post/{{post.id}}/comments"><img src="../assets/img/comment.png"/></a>
+                        <h4>  {{post.comment.length}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+   </div>
+</section>

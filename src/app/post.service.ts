@@ -43,4 +43,12 @@ export class PostService {
   createPost(post){
     return this.http.post(environment.Api_Url+'post',post,this.options)
   }
+
+  getMyPosts(){
+    return this.http.get(environment.Api_Url+"my_posts",this.options)
+  }
+
+  getPost(id){
+    return this.http.get(environment.Api_Url+"post/"+id,this.options)
+  }
 }

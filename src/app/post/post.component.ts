@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { environment } from '../../environments/environment';
 import { Post } from '../Post';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +12,7 @@ import { PostService } from '../post.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private postService:PostService) { }
+  constructor(private postService:PostService,private router:Router) { }
   user_img:string
   user_img_path:string
   ngOnInit() {
@@ -65,6 +66,7 @@ export class PostComponent implements OnInit {
 
   //performs main upload of user data
   curry(){
+    this.error=false
     this.loading=true
     this.post.image=this.image_data
     console.log(this.post)
@@ -80,6 +82,7 @@ export class PostComponent implements OnInit {
         this.error=false
         this.success=true
         this.success_msg=response['message']
+        this.router.navigate(['/home'])
       }
     })
   }

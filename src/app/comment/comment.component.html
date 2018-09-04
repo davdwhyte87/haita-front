@@ -1,11 +1,15 @@
 <section class="container">
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-5 offset-md-3">
+            <div *ngIf="comments.length==0" class="container">
+                <h4 class="text-muted">No comments yet....</h4>
+            </div>
             <ul class="list-group comment-list">
                 <li *ngFor="let comment of comments" class="list-group-item">
                     <div class="row">
                         <div class="col-md-2">
-                            <img src="{{pimage_path+comment.user.image}}" class="p-u-img rounded-circle">
+                            <img *ngIf="!comment.user.image" src="./assets/img/user2.png" class="p-u-img rounded-circle">
+                            <img *ngIf="comment.user.image" src="{{pimage_path+comment.user.image}}" class="p-u-img rounded-circle">
                         </div>
                         <div class="col">
                             <h4>@{{comment.user.uname}}</h4>
@@ -24,7 +28,7 @@
 <section style="position: absolute; bottom:0; width: 100%;" class="container">
     <div class="row">
         <div class="col-md-10 offset-md-4">
-            <form class="form-inline">
+            <form class="form-inline" style="width: 100%;">
                 <div class="form-group">
                   <textarea [(ngModel)]="comment.text" name="text" class="form-control c-input" placeholder="Comment here.." ></textarea>
                 </div>

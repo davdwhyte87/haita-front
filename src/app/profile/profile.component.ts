@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../User';
 import { environment } from '../../environments/environment';
+import { PostService } from '../post.service';
+import { Post } from '../Post';
 
 
 @Component({
@@ -11,12 +13,13 @@ import { environment } from '../../environments/environment';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private postService:PostService) { }
   user_img:string
   user_img_path:string
   ngOnInit() {
     this.getUser()
     this.user_img_path=environment.Api_Url+"image/user/"
+    this.getMyPosts()
   }
   file
   image_data
@@ -100,6 +103,16 @@ export class ProfileComponent implements OnInit {
         this.success=true
         this.success_msg=response['message']
         this.getUser()
+      }
+    })
+  }
+
+  posts:Post[]
+  p_image_path=environment.Api_Url+"image/post/"
+  getMyPosts(){
+    this.postService.getMyPosts().subscribe(response=>{
+      if(response['code']==1){
+        this.posts=response['data']
       }
     })
   }

@@ -1,7 +1,5 @@
 <app-nav></app-nav>
-<section class="container">
-  <div ng-include="nav.html"></div>
-</section>
+
 <img *ngIf="loading" src="../assets/img/loading.gif" class="loading offset-md-5"/>
 <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Error!</strong> {{error_msg}}
@@ -10,46 +8,51 @@
     </button>
 </div>
 <section *ngIf="posts" class="posts container">
-    <div *ngFor="let post of posts" class="row post">
-        <div class="col-md-7 offset-md-2">
-            <div class="card">
-                <div class="card-head">
-                    <div class="row">
-                        <div class="col-md-1">
-                            <img src="../assets/img/kesh.png" class="p-u-img rounded-circle" />
+    <ul class="list-group">
+        <li *ngFor="let post of posts" class="list-group-item">
+            <div  class="row post">
+                <div class="col-md-7 offset-md-2">
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img *ngIf="!post.user.image" src="./assets/img/user2.png" class="p-u-img rounded-circle" />
+                                    <img *ngIf="post.user.image" [src]="uimage_path+post.user.image" class="p-u-img rounded-circle" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h4>@{{post.user.uname}}</h4>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <h4>@{{post.user.uname}}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div >
-                        <img [src]="pimage_path+post.image" class="post-img img-responsive"/>
-                    </div>
-                    <div>
-                        <h3>{{post.title}}</h3>
-                    </div>
-                    <div>
-                        <p>
-                       {{post.text}}
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <a (click)="like(post.id)" class="like-btn">
-                                <img *ngIf="!liked(post.likes)"  src="../assets/img/lovef.png"/>
-                                <img *ngIf="liked(post.likes)"  src="../assets/img/love.png"/>
-                            </a>
-                            <h4>  {{post.likes.length}}</h4>
-                        </div>
-                        <div class="col-md-2">
-                            <a routerLink="/post/{{post.id}}/comments"><img src="../assets/img/comment.png"/></a>
-                            <h4>  {{post.comment.length}}</h4>
+                        <div class="card-body">
+                            <div >
+                                <img [src]="pimage_path+post.image" class="post-img img-responsive"/>
+                            </div>
+                            <div>
+                                <h3>{{post.title}}</h3>
+                            </div>
+                            <div>
+                                <p>
+                                {{post.text}}
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 cmx">
+                                    <a (click)="like(post.id)" class="like-btn">
+                                        <img *ngIf="!liked(post.likes)"  src="../assets/img/lovef.png" style="width: 100%;"/>
+                                        <img *ngIf="liked(post.likes)"  src="../assets/img/love.png" style="width: 100%;"/>
+                                    </a>
+                                    <h4>  {{post.likes.length}}</h4>
+                                </div>
+                                <div class="col-md-2 cmx">
+                                    <a routerLink="/post/{{post.id}}/comments"><img src="../assets/img/comment.png" style="width: 100%;"/></a>
+                                    <h4>  {{post.comment.length}}</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
 </section>

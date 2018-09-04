@@ -1,6 +1,4 @@
-<div ng-include="../nav.html">
-
-</div>
+<app-nav></app-nav>
 <section class="container">
   <div class="row">
   <img *ngIf="page_loading" src="../assets/img/loading.gif" class="loading offset-md-5"/>
@@ -34,13 +32,11 @@
                   </div>
                   <form>
                       <div class="form-group">
-                          <input  [(ngModel)]="post.title" type="text" name="title" placeholder="Full Name" class="form-control"/>
+                          <input  [(ngModel)]="post.title" type="text" name="title" placeholder="Post title" class="form-control"/>
                       </div>
                       
                       <div class="form-group">
-                        <textarea style="height:100px;" class="form-control"  [(ngModel)]="post.text" name="bio">
-
-                        </textarea>
+                        <textarea style="height:100px;" class="form-control"  [(ngModel)]="post.text" name="text" placeholder="Share your story">Share your story</textarea>
                       </div>
                       <div class="form-group">
                           <button (click)="create()" class="btn btn-primary">Create<img *ngIf="loading" src="../assets/img/loading.gif" class="loading"/></button>

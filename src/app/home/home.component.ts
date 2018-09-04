@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getPosts()
     this.pimage_path=environment.Api_Url+"image/post/"
+    this.uimage_path=environment.Api_Url+"image/user/"
   }
   liked(id){
     //CHECK if a users id is part of the liked ids f a post
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
       return false
     }
   }
+  uimage_path:string
   pimage_path:string
 
   my_id=localStorage.getItem('_user_id')
@@ -57,10 +59,7 @@ export class HomeComponent implements OnInit {
 
   like(id){
     this.postService.likePost(id).subscribe((response)=>{
-      console.log(response)
-      if(response['code']==1){
-        // this.getPosts()
-      }
+      this.getPosts()
     })
   }
 

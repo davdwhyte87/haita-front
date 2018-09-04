@@ -12,11 +12,14 @@ body{
 .post{
     padding-bottom: 20px;
 }
+#myNav{
+    width: 100%;
+}
 .posts{
     padding: 30px;
 }
 .post-img{
-    width: inherit;
+    width: 100%;
 }
 .p-u-img{
     height: 50px;
@@ -55,4 +58,12 @@ body{
 .post-img-open{
     height: 30px !important;
     width: 30px !important;
+}
+
+.cmx{
+    height: 60px !important;
+    width: 60px !important;
+}
+.cmx h4{
+    padding: 0px;
 }

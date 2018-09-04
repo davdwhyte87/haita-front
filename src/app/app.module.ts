@@ -16,6 +16,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { CommentComponent } from './comment/comment.component';
 import { NavComponent } from './nav/nav.component';
 import { PostComponent } from './post/post.component';
+import { AuthGuard } from './auth.guard';
+import { PostViewComponent } from './post-view/post-view.component';
+import { AutherrorsComponent } from './autherrors/autherrors.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { PostComponent } from './post/post.component';
     ProfileComponent,
     CommentComponent,
     NavComponent,
-    PostComponent
+    PostComponent,
+    PostViewComponent,
+    AutherrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { PostComponent } from './post/post.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

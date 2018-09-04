@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fchangepass',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class FchangepassComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private router:Router) { }
   ngOnInit() {
   }
   loading:boolean
@@ -24,7 +25,7 @@ export class FchangepassComponent implements OnInit {
 
 
   change_pass(){
-    console.log("kkk`")
+    this.error=false
     if(this.newpass==this.confirmpass){
       var data={'password':this.newpass,'code':this.code}
       this.authService.fchangepass(data).subscribe((response)=>{
@@ -32,6 +33,7 @@ export class FchangepassComponent implements OnInit {
         console.log(response['message'])
         if(response['code']==0){
           this.error=true
+          this.success=false
           this.error_msg=response['message']
           this.sign_in_errs=response['errors']
         }
@@ -39,13 +41,14 @@ export class FchangepassComponent implements OnInit {
           this.error=false
           this.success=true
           this.success_msg=response['message']
+          this.router.navigate(['/signin'])
         }
       })
     }
     else{
+      console.log("kkk`")
       this.error=true
       this.error_msg="Passwords do not match"
-
       return 0
     }
   }

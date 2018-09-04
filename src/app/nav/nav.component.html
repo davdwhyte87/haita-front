@@ -1,25 +1,44 @@
-<nav class="navbar sticky-top navbar-expand-lg  navbar-light bg-light cnav">
-  <a class="navbar-brand" href="#">Haita</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="myNav">
-      <ul class="navbar-nav  ml-auto nl" >
-      <li class="nav-item active">
-          <a class="nav-link nav-itm" href="#home">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link nav-itm" routerLink="/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="signup">Post</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link nav-itm" routerLink="/signin">Sign in </a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="signup">Sign up</a>
-      </li>
-      </ul>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary mt-4">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">Haita</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-primary">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a routerLink="/home">
+                <img src="./assets/img/brand/blue.png">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav ml-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">Profile
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/post">Post</a>
+          </li>
+          <li *ngIf="!auth_state" class="nav-item">
+            <a class="nav-link" routerLink="/signin">Signin</a>
+          </li>
+          <li *ngIf="!auth_state" class="nav-item">
+            <a class="nav-link" routerLink="/signup">Signup</a>
+          </li>
+          <li *ngIf="auth_state" class="nav-item">
+            <a class="nav-link btn btn-primary" (click)="logout()" routerLink="/signin">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

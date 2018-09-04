@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class ConfirmComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,12 @@ export class ConfirmComponent implements OnInit {
   code:string
 
   confirm(){
+    this.error=false
+    if(!this.code){
+      this.error=true
+      this.error_msg="Your code is required."
+      return 0
+    }
     this.loading=true
     this.authService.confirm(this.code).subscribe((response)=>{
       this.loading=false
@@ -35,6 +42,7 @@ export class ConfirmComponent implements OnInit {
         this.error=false
         this.success=true
         this.success_msg=response['message']
+        this.router.navigate(['/signin'])
       }
     })
   }

@@ -10,18 +10,21 @@ import { FchangepassComponent } from './fchangepass/fchangepass.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
+import { AuthGuard } from './auth.guard';
+import { PostViewComponent } from './post-view/post-view.component';
 
 const routes:Routes=[
-  {path:'',component:HomeComponent},
-  {path:'home',component:HomeComponent},
+  {path:'',component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'signup',component:SignupComponent},
   {path:'signin',component:SigninComponent},
   {path:'confirm',component:ConfirmComponent},
   {path:'forgotpass',component:ForgotpassComponent},
   {path:'fchangepass',component:FchangepassComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'post/:id/comments',component:CommentComponent},
-  {path:'post',component:PostComponent}
+  {path:'post',component:PostComponent,canActivate:[AuthGuard]},
+  {path:'view_post/:id',component:PostViewComponent,canActivate:[AuthGuard]}
 ]
 @NgModule({
   imports: [

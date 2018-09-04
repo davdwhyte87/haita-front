@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from '../User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,7 @@ import { User } from '../User';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private router:Router) { }
   
   ngOnInit() {
     this.loading=false
@@ -41,6 +42,7 @@ export class SigninComponent implements OnInit {
         this.token=response['token']
         localStorage.setItem('_token',this.token)
         localStorage.setItem('_user_id',response['user_id'])
+        this.router.navigate(['/home'])
       }
     })
   }
