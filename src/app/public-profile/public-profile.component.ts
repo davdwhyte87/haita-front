@@ -33,8 +33,7 @@ export class PublicProfileComponent implements OnInit {
       if(response['code']==1){
         this.user=response['data']
         this.getPosts(response['data'].id)
-        console.log(this.user)
-        this.done=true
+        // console.log(this.user)
         this.page_loading=false
       }else{
         this.page_loading=false
@@ -47,6 +46,7 @@ export class PublicProfileComponent implements OnInit {
     this.postService.findPosts(id).subscribe((response)=>{
       if(response['code']==1){
         this.posts=response['data']
+        this.done=true
       }
     })
   }
