@@ -20,7 +20,10 @@ export class PublicProfileComponent implements OnInit {
   uname=this.router.snapshot.paramMap.get('uname')
   user:User
   posts:Post[]
+  done:boolean
+  page_loading:boolean
   ngOnInit() {
+    this.page_loading=true
    this.getUser()
   }
 
@@ -30,6 +33,10 @@ export class PublicProfileComponent implements OnInit {
         this.user=response['data']
         this.getPosts(response['data'].id)
         console.log(this.user)
+        this.done=true
+        this.page_loading=false
+      }else{
+        this.page_loading=false
       }
     })
   }
