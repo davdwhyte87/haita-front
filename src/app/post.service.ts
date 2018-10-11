@@ -51,4 +51,8 @@ export class PostService {
   getPost(id){
     return this.http.get(environment.Api_Url+"post/"+id,this.options)
   }
+
+  findPosts(id){
+    return this.http.get(environment.Api_Url+"find_posts/"+id,this.options)
+  }
 }

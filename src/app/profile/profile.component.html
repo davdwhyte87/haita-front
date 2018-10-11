@@ -23,7 +23,7 @@
           <div class="card lg-div">
               <div class="card-body">
                   <div class="container offset-md-4">
-                      <img *ngIf="user.image" [src]="user_img_path+user.image" class="p-img rounded-circle" />
+                      <img *ngIf="user.image" src="data:image/jpeg;base64,{{user.image}}" class="p-img rounded-circle" />
                       <img *ngIf="!user.image" src="../assets/img/user2.png" class="p-img rounded-circle" />
                       <div style="padding: 10px; margin-left: 10px;">
                           <input hidden (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" type="file" name="img" class="hfimg" />
@@ -62,7 +62,7 @@
     <hr>
     <div class="row">
         <div *ngFor="let post of posts" class="col-md-4">
-            <a routerLink="/view_post/{{post.id}}"><img [src]="p_image_path+post.image" class="post-img"/></a>
+            <a routerLink="/view_post/{{post.id}}"><img src="data:image/jpeg;base64,{{post.image}}" class="post-img"/></a>
         </div>
     </div>
 </section>

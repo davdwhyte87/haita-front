@@ -12,6 +12,7 @@ import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
 import { AuthGuard } from './auth.guard';
 import { PostViewComponent } from './post-view/post-view.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 
 const routes:Routes=[
   {path:'',component:HomeComponent,canActivate:[AuthGuard]},
@@ -24,7 +25,8 @@ const routes:Routes=[
   {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'post/:id/comments',component:CommentComponent},
   {path:'post',component:PostComponent,canActivate:[AuthGuard]},
-  {path:'view_post/:id',component:PostViewComponent,canActivate:[AuthGuard]}
+  {path:'view_post/:id',component:PostViewComponent,canActivate:[AuthGuard]},
+  {path:'profile/public/:uname',component:PublicProfileComponent,canActivate:[AuthGuard]}
 ]
 @NgModule({
   imports: [

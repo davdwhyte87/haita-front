@@ -25,4 +25,8 @@ export class UserService {
   get(){
     return this.http.get(environment.Api_Url+"user",this.options)
   }
+
+  findUser(uname){
+    return this.http.get(environment.Api_Url+"find_user/"+uname,this.options)
+  }
 }

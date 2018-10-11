@@ -17,16 +17,16 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <img *ngIf="!post.user.image" src="./assets/img/user2.png" class="p-u-img rounded-circle" />
-                                    <img *ngIf="post.user.image" [src]="uimage_path+post.user.image" class="p-u-img rounded-circle" />
+                                    <img *ngIf="post.user.image"  src="data:image/jpeg;base64,{{post.user.image}}" class="p-u-img rounded-circle" />
                                 </div>
                                 <div class="col-md-8">
-                                    <h4>@{{post.user.uname}}</h4>
+                                    <a class="text-muted" routerLink="/profile/public/{{post.user.uname}}">@{{post.user.uname}}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div >
-                                <img [src]="pimage_path+post.image" class="post-img img-responsive"/>
+                                <img src="data:image/jpeg;base64,{{post.image}}" class="post-img img-responsive"/>
                             </div>
                             <div>
                                 <h3>{{post.title}}</h3>
