@@ -21,6 +21,7 @@ export class PublicProfileComponent implements OnInit {
   user:User
   posts:Post[]
   done:boolean
+  err_f:boolean
   page_loading:boolean
   ngOnInit() {
     this.page_loading=true
@@ -37,6 +38,7 @@ export class PublicProfileComponent implements OnInit {
         this.page_loading=false
       }else{
         this.page_loading=false
+        this.err_f=true
       }
     })
   }
